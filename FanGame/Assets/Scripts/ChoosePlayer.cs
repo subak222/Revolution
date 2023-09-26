@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class ChoosePlayer : MonoBehaviour
 {
 	[SerializeField]
-	private Sprite[]		character;
+	public Sprite[]		character;
 
     private GameObject      player;
-    private int             playerCount;
+    public int             playerCount;
     
     private void Awake()
     {

@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
     {
         if ( other.CompareTag("Obstacle") )
 		{
-			bool isDie = playerHP.TakeDamage(1);
+			bool isDie = playerHP.TakeDamage(2);
 			if ( isDie == true )
 			{
 				GetComponent<Collider2D>().enabled = false;

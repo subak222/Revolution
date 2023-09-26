@@ -1,17 +1,27 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {	
 	[SerializeField]
 	private UIController	uIController;
+
 	[SerializeField]
 	private GameObject		pattern01;
 	private readonly float	scoreScale = 20;	// 점수 증가 계수 (읽기전용)
 
+	private GameSprite		gameSprite;
+	
 	// 플레이어 점수 (죽지않고 버틴 시간)
 	public	float	CurrentScore	{ private set; get; } = 0;
 	public 	bool 	IsGamePlay		{ private set; get; } = false;
 
+	private void Start()
+	{
+		gameSprite = GameObject.Find("Player").GetComponent<GameSprite>();
+	}
 	public void GameStart()
 	{
 		uIController.GameStrat();
@@ -19,6 +29,8 @@ public class GameController : MonoBehaviour
 		pattern01.SetActive(true);
 
 		IsGamePlay = true;
+
+		gameSprite.ChangeSprite();
 	}
 
 	public void GameExit()
