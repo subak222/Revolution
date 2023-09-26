@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Obstacle
   - Ground
+  - All
+  - Jack
+  - Onyu
+  - Gamini
+  - Ryu
   layers:
   - Default
   - TransparentFX

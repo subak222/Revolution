@@ -36,7 +36,15 @@ public class PlayerHP : MonoBehaviour
 			StartCoroutine(nameof(OnInvincibility));
 
 			currentHP = currentHP-damage;
-            imageHP[currentHP+1].SetActive(false);
+			if ( damage > 1)
+			{
+				if ( damage == 4 )
+				{
+					imageHP[currentHP+3].SetActive(false);
+					imageHP[currentHP+2].SetActive(false);
+				}
+				imageHP[currentHP+1].SetActive(false);
+			}
 			imageHP[currentHP].SetActive(false);
 		}
 		else
@@ -60,7 +68,7 @@ public class PlayerHP : MonoBehaviour
 			current += Time.deltaTime;
 			percent = current / invincibilityDuration;
 
-			spriteRenderer.color = Color.Lerp(originColor, Color.red, Mathf.PingPong(Time.time * colorSpeed, 1));
+			spriteRenderer.color = Color.Lerp(originColor, Color.black, Mathf.PingPong(Time.time * colorSpeed, 1));
 
 			yield return null;
 		}
