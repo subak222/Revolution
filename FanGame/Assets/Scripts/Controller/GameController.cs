@@ -6,13 +6,14 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {	
 	[SerializeField]
-	private UIController	uIController;
+	private UIController		uIController;
 
 	[SerializeField]
-	private GameObject		pattern01;
-	private readonly float	scoreScale = 20;	// 점수 증가 계수 (읽기전용)
+	//private GameObject		pattern01;
+	private PatternController	patternController;
+	private readonly float		scoreScale = 20;	// 점수 증가 계수 (읽기전용)
 
-	private GameSprite		gameSprite;
+	private GameSprite			gameSprite;
 	
 	// 플레이어 점수 (죽지않고 버틴 시간)
 	public	float	CurrentScore	{ private set; get; } = 0;
@@ -26,7 +27,8 @@ public class GameController : MonoBehaviour
 	{
 		uIController.GameStrat();
 
-		pattern01.SetActive(true);
+		//pattern01.SetActive(true);
+		patternController.GameStart();
 
 		IsGamePlay = true;
 
@@ -46,7 +48,8 @@ public class GameController : MonoBehaviour
 	{
 		uIController.GameOver();
 
-		pattern01.SetActive(false);
+		//pattern01.SetActive(false);
+		patternController.GameOver();
 
 		IsGamePlay = false;
 	}

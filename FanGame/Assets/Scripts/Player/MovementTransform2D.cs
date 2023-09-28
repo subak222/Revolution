@@ -2,18 +2,20 @@ using UnityEngine;
 
 public class MovementTransform2D : MonoBehaviour
 {
-    [SerializeField]
-    private float       moveSpeed;
-    [SerializeField]
-    private Vector3     moveDirection;
+	[SerializeField]
+	private	float		moveSpeed;
+	[SerializeField]
+	private	Vector3		moveDirection;
 
-    private void Update()
-    {
-        transform.position += moveDirection * moveSpeed * Time.deltaTime;    
-    }
+	public	Vector3		MoveDirection => moveDirection;
 
-    public void MoveTo(Vector3 direction)
-    {   
-        moveDirection = direction;
-    }
+	private void Update()
+	{
+		transform.position += moveDirection * moveSpeed * Time.deltaTime;
+	}
+
+	public void MoveTo(Vector3 direction)
+	{
+		moveDirection = direction;
+	}
 }

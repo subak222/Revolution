@@ -9,11 +9,10 @@ public class ChoosePlayer : MonoBehaviour
 	public Sprite[]		character;
 
     private GameObject      player;
-    public int             playerCount;
+    public int             playerCount = 0;
     
     private void Awake()
     {
-        playerCount = character.Length;
         player = GameObject.Find("ChoosePlayer");
         player.GetComponent<Image>().sprite = character[0];   
     }
