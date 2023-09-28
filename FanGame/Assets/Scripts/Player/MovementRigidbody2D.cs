@@ -26,8 +26,11 @@ public class MovementRigidbody2D : MonoBehaviour
 	private	Vector2			footPosition;		// 바닥 체크를 위한 플레이어 발 위치
 	private	Vector2			footArea;			// 바닥 체크를 위한 플레이어 발 인식 범위
 
+	private ChangeScale		changeScale;
 	private	Rigidbody2D		rigid2D;            // 속력 제어를 위한 Rigidbody2D
 	private	new Collider2D	collider2D;			// 현재 오브젝트의 충돌 범위 정보
+	private ChoosePlayer	choosePlayer;
+	private PlayerHP		playerHP;
 
 	public	bool			IsLongJump { set; get; } = false;
 
@@ -35,10 +38,17 @@ public class MovementRigidbody2D : MonoBehaviour
 	{
 		rigid2D		= GetComponent<Rigidbody2D>();
 		collider2D	= GetComponent<Collider2D>();
+		choosePlayer = GameObject.Find("GameController").GetComponent<ChoosePlayer>();
+		playerHP	= GetComponent<PlayerHP>();
+		changeScale = GameObject.Find("Player").GetComponent<ChangeScale>();
 	}
 
 	private void FixedUpdate()
 	{
+		moveSpeed = choosePlayer.playerCount == 1 ? 12 : 8;
+		maxJumpCount = choosePlayer.playerCount == 2 ? 3 : 2;
+		playerHP.invincibilityDuration = choosePlayer.playerCount == 4 ? 1.4f : 0.7f;
+
 		// 플레이어 오브젝트의 Collider2D min, center, max 위치 정보
 		Bounds bounds	= collider2D.bounds;
 		// 플레이어의 발 위치 설정

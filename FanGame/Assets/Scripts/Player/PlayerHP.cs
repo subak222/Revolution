@@ -7,8 +7,7 @@ public class PlayerHP : MonoBehaviour
 	private	GameObject[]	imageHP;
 	private	int				currentHP;
 	
-	[SerializeField]
-	private	float			invincibilityDuration;		// 무적 지속시간
+	public	float			invincibilityDuration;		// 무적 지속시간
 	private	bool			isInvincibility = false;	// 무적 여부
 
 	private	SoundController	soundController;
