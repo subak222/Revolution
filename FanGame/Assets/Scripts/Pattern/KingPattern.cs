@@ -42,9 +42,11 @@ public class KingPattern : MonoBehaviour
 
     private IEnumerator CombinedPatterns()
     {
+        // 패턴 시작 전 잠시 대기하는 시간
+        yield return new WaitForSeconds(1);
+        
         isPatternRunning = true;
 
-        // 패턴 2 실행
         int index = 0;
         while (index < warningImages.Length)
         {
