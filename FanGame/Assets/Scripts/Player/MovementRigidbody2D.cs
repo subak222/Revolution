@@ -32,7 +32,8 @@ public class MovementRigidbody2D : MonoBehaviour
 	private ChoosePlayer	choosePlayer;
 	private PlayerHP		playerHP;
 
-	public	bool			IsLongJump { set; get; } = false;
+
+	public bool			IsLongJump { set; get; } = false;
 
 	private void Awake()
 	{
@@ -50,24 +51,17 @@ public class MovementRigidbody2D : MonoBehaviour
 		playerHP.invincibilityDuration = choosePlayer.playerCount == 4 ? 1.4f : 0.7f;
 
 		// 플레이어 오브젝트의 Collider2D min, center, max 위치 정보
-		Bounds bounds	= collider2D.bounds;
+		Bounds bounds = collider2D.bounds;
 		// 플레이어의 발 위치 설정
-		footPosition	= new Vector2(bounds.center.x, bounds.min.y);
+		footPosition = new Vector2(bounds.center.x, bounds.min.y);
 		// 플레이어의 발 인식 범위 설정
-		footArea		= new Vector2((bounds.max.x - bounds.min.x) * 0.5f, 0.1f);
+		footArea = new Vector2((bounds.max.x - bounds.min.x) * 0.5f, 0.1f);
 		// 플레이어의 발 위치에 박스를 생성하고, 박스가 바닥과 닿아있으면 isGrounded = true
-		isGrounded		= Physics2D.OverlapBox(footPosition, footArea, 0, groundLayer);
-
-		// 플레이어의 발이 땅에 닿아 있고, y축 속력이 0이하이면 점프 횟수 초기화
-		// y축 속력이 + 값이면 점프를 하는중..
-		if ( isGrounded == true && rigid2D.velocity.y <= 0 )
-		{
-			currentJumpCount = maxJumpCount;
-		}
+		isGrounded = Physics2D.OverlapBox(footPosition, footArea, 0, groundLayer);
 
 		// 낮은 점프, 높은 점프 구현을 위한 중력 계수(gravityScale) 조절 (Jump Up일 때만 적용)
 		// 중력 계수가 낮은 if 문은 높은 점프가 되고, 중력 계수가 높은 else 문은 낮은 점프가 된다.
-		if ( IsLongJump && rigid2D.velocity.y > 0 )
+		if (IsLongJump && rigid2D.velocity.y > 0)
 		{
 			rigid2D.gravityScale = lowGravity;
 		}
@@ -75,9 +69,15 @@ public class MovementRigidbody2D : MonoBehaviour
 		{
 			rigid2D.gravityScale = highGravity;
 		}
+
+		// 바닥에 닿지 않았을 때만 점프 카운트 초기화
+		if (isGrounded == true && rigid2D.velocity.y <= 0)
+		{
+			currentJumpCount = maxJumpCount;
+		}
 	}
 
-    private void LateUpdate()
+	private void LateUpdate()
     {
         float x = Mathf.Clamp(transform.position.x, Constants.min.x, Constants.max.x);
         transform.position = new Vector3(x, transform.position.y, transform.position.z);    
@@ -96,14 +96,16 @@ public class MovementRigidbody2D : MonoBehaviour
 	/// </summary>
 	public bool JumpTo()
 	{
-		if ( currentJumpCount > 0 )
+		Debug.Log(currentJumpCount);
+		if (currentJumpCount > 0)
 		{
 			rigid2D.velocity = new Vector2(rigid2D.velocity.x, jumpForce);
-			currentJumpCount --;
+			currentJumpCount--;
+			
 
 			return true;
 		}
 
 		return false;
-	}
+	}    
 }

@@ -12,8 +12,6 @@ public class FlowerPattern : MonoBehaviour
 
     private AudioSource flowerDance;           // 오디오 소스 추가
 
-    private bool patternActive = false;        // 패턴이 활성화되어 있는지 여부를 나타내는 플래그
-
     private void Awake()
     {
         flowerDance = GetComponent<AudioSource>(); // 오디오 소스 가져오기
@@ -41,9 +39,6 @@ public class FlowerPattern : MonoBehaviour
 
         // 보스가 아래로 이동
         yield return StartCoroutine(nameof(MoveDown));
-
-        // 패턴 시작 시 패턴 활성화
-        patternActive = true;
 
         int count = 0;
         flowerDance.Play();
@@ -78,9 +73,6 @@ public class FlowerPattern : MonoBehaviour
             if (boss.transform.position.y <= bossDestinationY)
             {
                 boss.MoveTo(Vector3.zero);
-
-                // 패턴 종료 시 패턴 비활성화
-                patternActive = false;
 
                 yield break;
             }
