@@ -34,7 +34,8 @@ public class ApearPattern : MonoBehaviour
 
             index++;
 
-            yield return new WaitForSeconds(3f);plane.SetActive(false);
+            yield return new WaitForSeconds(3f);
+            plane.SetActive(false);
         }
 
         for (int i = 0; i < text.Length; ++i)

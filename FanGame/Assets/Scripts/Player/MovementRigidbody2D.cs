@@ -96,7 +96,6 @@ public class MovementRigidbody2D : MonoBehaviour
 	/// </summary>
 	public bool JumpTo()
 	{
-		Debug.Log(currentJumpCount);
 		if (currentJumpCount > 0)
 		{
 			rigid2D.velocity = new Vector2(rigid2D.velocity.x, jumpForce);
