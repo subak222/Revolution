@@ -67,7 +67,7 @@ public class UIController : MonoBehaviour
 
 	public void GoToYoutube()
 	{
-		Application.OpenURL("https://www.youtube.com/channel/UCjBMozaocv9AYsGRVqUVImQ");
+		Application.OpenURL("https://www.youtube.com/@RE_revolution");
 	}
 
     private void Update()

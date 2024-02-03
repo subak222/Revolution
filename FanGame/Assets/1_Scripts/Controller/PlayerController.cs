@@ -59,11 +59,11 @@ public class PlayerController : MonoBehaviour
 		{
 			if ( choosePlayer.playerCount == 0 )
 			{
-				isDie = playerHP.TakeDamage(1);
+				isDie = playerHP.TakeDamage(1, choosePlayer.playerCount);
 			}
 			else
 			{
-				isDie = playerHP.TakeDamage(2);
+				isDie = playerHP.TakeDamage(2, choosePlayer.playerCount);
 			}
 		}
 
@@ -72,15 +72,15 @@ public class PlayerController : MonoBehaviour
 		{
 			if (choosePlayer.playerCount == 1)
 			{
-				isDie = playerHP.TakeDamage(1);
+				isDie = playerHP.TakeDamage(1, choosePlayer.playerCount);
 			}
-			else if (choosePlayer.playerCount == 3)
+			else if (choosePlayer.playerCount == 2)
 			{
-				isDie = playerHP.TakeDamage(4);
+				isDie = playerHP.TakeDamage(4, choosePlayer.playerCount);
 			}
 			else
 			{
-				isDie = playerHP.TakeDamage(2);
+				isDie = playerHP.TakeDamage(2, choosePlayer.playerCount);
 			}
 		}
 
@@ -89,15 +89,15 @@ public class PlayerController : MonoBehaviour
 		{
 			if (choosePlayer.playerCount == 2)
 			{
-				isDie = playerHP.TakeDamage(1);
+				isDie = playerHP.TakeDamage(1, choosePlayer.playerCount);
 			}
-			else if (choosePlayer.playerCount == 4)
+			else if (choosePlayer.playerCount == 3)
 			{
-				isDie = playerHP.TakeDamage(4);
+				isDie = playerHP.TakeDamage(4, choosePlayer.playerCount);
 			}
 			else
 			{
-				isDie = playerHP.TakeDamage(2);
+				isDie = playerHP.TakeDamage(2, choosePlayer.playerCount);
 			}
 		}
 
@@ -106,32 +106,49 @@ public class PlayerController : MonoBehaviour
 		{
 			if (choosePlayer.playerCount == 3)
 			{
-				isDie = playerHP.TakeDamage(1);
+				isDie = playerHP.TakeDamage(1, choosePlayer.playerCount);
 			}
-			else if (choosePlayer.playerCount == 1)
+			else if (choosePlayer.playerCount == 4)
 			{
-				isDie = playerHP.TakeDamage(4);
+				isDie = playerHP.TakeDamage(4, choosePlayer.playerCount);
 			}
 			else
 			{
-				isDie = playerHP.TakeDamage(2);
+				isDie = playerHP.TakeDamage(2, choosePlayer.playerCount);
 			}
 		}
 
-		//류 파트 데미지
-		else if (other.CompareTag("Ryu"))
+        //리온 파트 데미지
+        else if (other.CompareTag("Leeon"))
+        {
+            if (choosePlayer.playerCount == 4)
+            {
+                isDie = playerHP.TakeDamage(1, choosePlayer.playerCount);
+            }
+            else if (choosePlayer.playerCount == 5)
+            {
+                isDie = playerHP.TakeDamage(4, choosePlayer.playerCount);
+            }
+            else
+            {
+                isDie = playerHP.TakeDamage(2, choosePlayer.playerCount);
+            }
+        }
+
+        //류 파트 데미지
+        else if (other.CompareTag("Ryu"))
 		{
-			if (choosePlayer.playerCount == 4)
+			if (choosePlayer.playerCount == 5)
 			{
-				isDie = playerHP.TakeDamage(1);
+				isDie = playerHP.TakeDamage(1, choosePlayer.playerCount);
 			}
 			else if (choosePlayer.playerCount == 1)
 			{
-				isDie = playerHP.TakeDamage(4);
+				isDie = playerHP.TakeDamage(4, choosePlayer.playerCount);
 			}
 			else
 			{
-				isDie = playerHP.TakeDamage(2);
+				isDie = playerHP.TakeDamage(2, choosePlayer.playerCount);
 			}
 		}
 
