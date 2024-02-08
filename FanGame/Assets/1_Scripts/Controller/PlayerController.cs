@@ -123,7 +123,7 @@ public class PlayerController : MonoBehaviour
         {
             if (choosePlayer.playerCount == 4)
             {
-                isDie = playerHP.TakeDamage(1, choosePlayer.playerCount);
+                isDie = playerHP.TakeDamage(0, choosePlayer.playerCount);
             }
             else if (choosePlayer.playerCount == 5)
             {
